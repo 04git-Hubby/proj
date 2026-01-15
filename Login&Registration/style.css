@@ -1,0 +1,194 @@
+body {
+  background: radial-gradient(circle at left, #e7d8b1, #023047 80%);
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  width: 70%;
+  max-width: 900px;
+  padding: 30px;
+  gap: 15px;
+  border-radius: 15px;
+}
+
+.welcome {
+  flex: 1;
+  background: rgba(9, 48, 88, 0.746);
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+  border-radius: 50px;
+  text-align: center;
+  padding: 40px 20px;
+  color: #e7d8b1;
+}
+
+.signup-form {
+  flex: 1;
+  border-radius: 5px;
+  background: #e7d8b1;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+  border-radius: 50px;
+  text-align: center;
+  padding: 40px 30px;
+  color: #023047;
+}
+
+.signup-box {
+  position: relative;
+  margin-top: 5%;
+}
+
+
+.signup-box input {
+  width: 80%;
+  padding: 12px;
+  border: 2px solid #023047;
+  border-radius: 5px;
+  outline: none;
+  font-size: 15px;
+  background: transparent;
+  transition: 0.3s ease;
+}
+
+.signup-box label {
+  position: absolute;
+  left: 40px;
+  top: 13px;
+  padding: 0 5px;
+  color: #023047;
+  font-size: 14px;
+  pointer-events: none;
+  transition: 0.3s ease;
+}
+
+.signup-box input:focus + label,
+.signup-box input:not(:placeholder-shown) + label {
+  transform: translateY(-20px);
+  font-size: 15px;
+  color: #023047;
+  background: #e7d8b1; /* helps label look clean on border */
+}
+
+.signup-box input:focus {
+  border-color: #023047;
+  background: #e7d8b1;
+}
+
+.signup-box ion-icon {
+  position: absolute;
+  right: 45px; /* keeps icon inside input and aligned properly */
+  top: 50%;
+  transform: translateY(-50%);
+  color: #023047;
+  font-size: 20px;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+
+
+
+
+.remember-forgotpass {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 11px;
+  color: #023047;
+  width: 87%; /* match input field width */
+  margin: auto;
+  padding-top: 0%;
+  padding-bottom:0%;
+}
+
+.remember-forgotpass label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.remember-forgotpass a {
+  color: #023047;
+  text-decoration: none;
+}
+
+.remember-forgotpass a:hover {
+  text-decoration: underline;
+}
+
+
+
+.btn{
+  background: #e7d8b1;
+  border: 2px solid #023047;
+  border-radius: 0.9375em;
+  color: #023047;
+  width: 88%;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 15px;
+}
+
+.btn:disabled {
+ pointer-events: none;
+}
+
+.btn:hover {
+ color: #e7d8b1;
+ background-color: #023047;
+ box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+ transform: translateY(-2px);
+}
+
+.btn:active {
+ box-shadow: none;
+ transform: translateY(0);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Responsive layout for mobile */
+@media (max-width: 600px) {
+  .wrapper {
+    flex-direction: column;   /* stack the two divs vertically */
+    width: 90%;               /* narrower on small screens */
+    padding: 20px;
+  }
+
+  .welcome, .signup-form {
+    flex: none;               /* prevent stretching */
+    width: 85%;              /* full width */
+    padding: 20px;
+  }
+
+  .signup-box input {
+    width: 90%;               /* adjust input width */
+  }
+
+  .signup-box label{
+    left: 20px;
+  }
+
+  .btn {
+    width: 100%;
+    padding: 10px;            /* make button fit nicely */
+  }
+}
