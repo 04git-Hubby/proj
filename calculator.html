@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Simple React Calculator</title>
+
+  <!-- React CDN -->
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f2f2f2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .calculator {
+      background: #222;
+      padding: 20px;
+      border-radius: 10px;
+      width: 220px;
+    }
+
+    .display {
+      background: #000;
+      color: #0f0;
+      font-size: 1.8rem;
+      padding: 10px;
+      text-align: right;
+      margin-bottom: 10px;
+      border-radius: 5px;
+    }
+
+    .buttons {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+    }
+
+    button {
+      padding: 12px;
+      font-size: 1.1rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      background: #444;
+      color: #fff;
+    }
+
+    .operator {
+      background: #ff9500;
+    }
+
+    .equal {
+      grid-column: span 2;
+      background: #28a745;
+    }
+
+    .clear {
+      grid-column: span 2;
+      background: #dc3545;
+    }
+    .delete {
+      background: #6c757d;
+      color: white;
+    }
+
+  </style>
+</head>
+<body>
+
+<div id="root"></div>
+
+<script type="text/babel">
+  function Calculator() {
+    const [value, setValue] = React.useState("");
+
+    const add = (v) => setValue(value + v);
+    const clear = () => setValue("");
+    const del = () => setValue(value.slice(0, -1));
+
+    const calculate = () => {
+      try {
+        setValue(eval(value).toString());
+      } catch (e) {
+        setValue("Error");
+      }
+    };
+
+    return (
+      <div className="calculator">
+        <div className="display">{value || "0"}</div>
+
+        <div className="buttons">
+          <button className="clear" onClick={clear}>C</button>
+          <button className="delete" onClick={del}>⌫</button>
+          <button className="operator" onClick={() => add("/")}>÷</button>
+
+          <button onClick={() => add("7")}>7</button>
+          <button onClick={() => add("8")}>8</button>
+          <button onClick={() => add("9")}>9</button>
+          <button className="operator" onClick={() => add("*")}>×</button>
+
+          <button onClick={() => add("4")}>4</button>
+          <button onClick={() => add("5")}>5</button>
+          <button onClick={() => add("6")}>6</button>
+          <button className="operator" onClick={() => add("-")}>−</button>
+
+          <button onClick={() => add("1")}>1</button>
+          <button onClick={() => add("2")}>2</button>
+          <button onClick={() => add("3")}>3</button>
+          <button className="operator" onClick={() => add("+")}>+</button>
+
+          <button onClick={() => add("0")}>0</button>
+          <button onClick={() => add(".")}>.</button>
+          <button className="equal" onClick={calculate}>=</button>
+        </div>
+      </div>
+    );
+  }
+
+  ReactDOM.createRoot(document.getElementById("root"))
+    .render(<Calculator />);
+</script>
+
+
+</body>
+</html>
